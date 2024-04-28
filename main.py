@@ -8,18 +8,16 @@ import random
 app = Flask(__name__)
 
 # Load the model and tokenizer outside the route to save loading time
-model = tf.keras.models.load_model('SoloconLM Beta 1.h5')
-with open('tokenizerBeta1.pickle', 'rb') as handle:
+model = tf.keras.models.load_model('SOLOCO~1.H5')
+with open('TOKENI~1.PIC', 'rb') as handle:
     tokenizer = pickle.load(handle)
 
 def sample_from_logits(logits, temperature=1.0):
-    """ Apply temperature to logits and sample an index from the output probabilities. """
     scaled_logits = logits / temperature
     probabilities = tf.nn.softmax(scaled_logits).numpy()
     return np.random.choice(len(probabilities), p=probabilities)
 
 def generate_text(model, tokenizer, seed_text, num_words=50):
-    """ Generates text starting from a seed_text. """
     text_generated = seed_text
     for _ in range(num_words):
         encoded_text = tokenizer.texts_to_sequences([text_generated])
