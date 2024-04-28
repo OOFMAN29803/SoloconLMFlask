@@ -1,4 +1,4 @@
-Flask==2.0.3
-requests==2.27.1
-numpy==1.22.3
+Flask
+requests
+numpy>=1.23.5,<2.0.0
 tensorflow==2.15.0
